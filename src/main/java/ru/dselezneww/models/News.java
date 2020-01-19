@@ -10,7 +10,7 @@ public class News {
     private String link;
     private String shortDescription;
     private String longDescription;
-    private Calendar publishedDate;
+    private Date publishedDate;
 
     public String getNewsOwner() {
         return newsOwner;
@@ -60,7 +60,7 @@ public class News {
         this.longDescription = longDescription;
     }
 
-    public Calendar getPublishedDate() {
+    public Date getPublishedDate() {
         return publishedDate;
     }
 
