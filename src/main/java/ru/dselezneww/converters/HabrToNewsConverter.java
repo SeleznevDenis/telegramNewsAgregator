@@ -1,33 +1,31 @@
-package ru.dselezneww.pb;
+package ru.dselezneww.converters;
 
 import com.sun.syndication.feed.synd.SyndContent;
 import com.sun.syndication.feed.synd.SyndEntry;
 import com.sun.syndication.feed.synd.SyndFeed;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import ru.dselezneww.models.News;
+import ru.dselezneww.models.NewsSources;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class HabrToNewsConverter {
+public class HabrToNewsConverter implements NewsConverter {
 
-    private RssParser rssparser;
-    private String url = "https://habr.com/ru/rss/best/daily";
-
-    @Autowired
-    public HabrToNewsConverter(RssParser parser) {
-        this.rssparser = parser;
+    @Override
+    public NewsSources getSource() {
+        return NewsSources.HABR;
     }
 
-    public List<News> convert() {
+    @Override
+    public List<News> convert(SyndFeed source) {
         List<News> newsList = new ArrayList<>();
-        SyndFeed syndFeed = this.rssparser.parseFeed(this.url);
-        String habrNewsOwner = syndFeed.getAuthor();
-        for (Object obj : syndFeed.getEntries()) {
+        String habrNewsOwner = source.getAuthor();
+        for (Object obj : source.getEntries()) {
             SyndEntry entry = (SyndEntry) obj;
             News news = new News();
+            news.setNewsOwner(habrNewsOwner);
             news.setTitle(entry.getTitle());
             news.setLink(entry.getLink());
             news.setPublishedDate(entry.getPublishedDate());
