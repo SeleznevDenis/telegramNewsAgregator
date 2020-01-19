@@ -60,6 +60,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
+        <finalName>former-news-feeder</finalName>
     </build>
 
 </project>
