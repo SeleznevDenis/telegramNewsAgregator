@@ -1,7 +1,7 @@
 package ru.dselezneww.models;
 
 public enum  NewsSources {
-    HABR("");
+    HABR("https://habr.com/ru/rss/best/daily");
 
     private String url;
 
