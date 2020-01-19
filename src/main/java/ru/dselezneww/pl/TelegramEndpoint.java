@@ -28,6 +28,7 @@ public class TelegramEndpoint extends TelegramLongPollingBot {
             result = this.orchestration.handleInput(update);
         } catch (Exception e) {
             LOGGER.error(e.getMessage(), e);
+            LOGGER.error(e.getMessage(), e);
             result = e.getMessage();
         }
         this.sendMsg(update.getMessage().getChatId().toString(), result);
@@ -41,6 +42,7 @@ public class TelegramEndpoint extends TelegramLongPollingBot {
         try {
              execute(sendMessage);
         } catch (TelegramApiException e) {
+            LOGGER.error("Ошибка при отправке сообщения", e);
             LOGGER.error("Exception: ", e.toString());
         }
     }
