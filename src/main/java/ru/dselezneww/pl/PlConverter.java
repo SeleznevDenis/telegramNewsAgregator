@@ -9,12 +9,13 @@ import java.util.StringJoiner;
 public class PlConverter {
 
     public String convert(News news) {
-        StringJoiner sj = new StringJoiner(System.lineSeparator());
+        /*StringJoiner sj = new StringJoiner(System.lineSeparator());
         sj.add(news.getTitle() + " " + news.getAuthor())
                 .add(news.getLink())
                 .add(news.getLongDescription())
                 .add(news.getPublishedDate().toString())
                 .add("(C) " + news.getNewsOwner());
-        return sj.toString();
+        return sj.toString();*/
+        return news.getLink();
     }
 }

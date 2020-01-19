@@ -29,10 +29,9 @@ public class TelegramEndpoint extends TelegramLongPollingBot {
             LOGGER.info(result);
         } catch (Exception e) {
             LOGGER.error(e.getMessage(), e);
-            LOGGER.error(e.getMessage(), e);
-            result = "Orchestration exception";
+            result = "Some problem";
         }
-        this.sendMsg(update.getMessage().getChatId().toString(), update.getMessage().getText());
+        this.sendMsg(update.getMessage().getChatId().toString(), result);
     }
 
     public synchronized void sendMsg(String chatId, String s) {
