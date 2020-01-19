@@ -23,15 +23,16 @@ public class TelegramEndpoint extends TelegramLongPollingBot {
 
     @Override
     public void onUpdateReceived(Update update) {
-        String result = null;
+        String result;
         try {
             result = this.orchestration.handleInput(update);
+            LOGGER.info(result);
         } catch (Exception e) {
             LOGGER.error(e.getMessage(), e);
             LOGGER.error(e.getMessage(), e);
-            result = e.getMessage();
+            result = "Orchestration exception";
         }
-        this.sendMsg(update.getMessage().getChatId().toString(), result);
+        this.sendMsg(update.getMessage().getChatId().toString(), update.getMessage().getText());
     }
 
     public synchronized void sendMsg(String chatId, String s) {
