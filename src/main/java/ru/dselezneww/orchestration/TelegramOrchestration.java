@@ -14,7 +14,6 @@ import java.util.List;
 @Component
 public class TelegramOrchestration {
 
-    private TelegramEndpoint endpoint;
     private NewsLoader newsLoader;
     private PlConverter plConverter;
 
@@ -24,18 +23,9 @@ public class TelegramOrchestration {
         this.plConverter = plConverter;
     }
 
-    @Autowired
-    public void setTelegramEndpoint(TelegramEndpoint endpoint) {
-        this.endpoint = endpoint;
-    }
-
-    public void handleInput(Update update) {
+    public String handleInput(Update update) {
         List<News> news = this.newsLoader.getNews(NewsSources.HABR);
         News news1 = news.get(0);
-        this.sendMessage(update.getMessage().getChatId().toString(), this.plConverter.convert(news1));
-    }
-
-    public void sendMessage(String chatId, String s) {
-        this.endpoint.sendMsg(chatId, s);
+        return this.plConverter.convert(news1);
     }
 }
