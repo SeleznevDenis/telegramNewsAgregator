@@ -10,6 +10,7 @@ import ru.dselezneww.pl.PlConverter;
 import ru.dselezneww.pl.TelegramEndpoint;
 
 import java.util.List;
+import java.util.Random;
 
 @Component
 public class TelegramOrchestration {
@@ -25,7 +26,8 @@ public class TelegramOrchestration {
 
     public String handleInput(Update update) {
         List<News> news = this.newsLoader.getNews(NewsSources.HABR);
-        News news1 = news.get(0);
+        Random random = new Random();
+        News news1 = news.get(random.nextInt(news.size() - 1));
         return this.plConverter.convert(news1);
     }
 }

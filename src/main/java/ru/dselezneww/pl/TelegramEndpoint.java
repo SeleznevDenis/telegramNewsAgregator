@@ -36,7 +36,7 @@ public class TelegramEndpoint extends TelegramLongPollingBot {
 
     public synchronized void sendMsg(String chatId, String s) {
         SendMessage sendMessage = new SendMessage();
-        sendMessage.enableMarkdown(true);
+        sendMessage.enableWebPagePreview();
         sendMessage.setChatId(chatId);
         sendMessage.setText(s);
         try {
