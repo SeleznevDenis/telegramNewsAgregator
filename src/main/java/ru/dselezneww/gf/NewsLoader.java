@@ -8,17 +8,18 @@ import ru.dselezneww.models.News;
 import ru.dselezneww.models.NewsSources;
 import ru.dselezneww.pb.RssParser;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 @Component
-public class ConvertersStorage {
+public class NewsLoader {
 
     private RssParser rssParser;
-    private Map<NewsSources, NewsConverter> storage;
+    private Map<NewsSources, NewsConverter> storage = new HashMap<>();
 
     @Autowired
-    public ConvertersStorage(RssParser rssParser, NewsConverter... converters) {
+    public NewsLoader(RssParser rssParser, NewsConverter... converters) {
         for (NewsConverter converter : converters) {
             this.storage.put(converter.getSource(), converter);
         }

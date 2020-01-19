@@ -10,7 +10,6 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import ru.dselezneww.models.NewsSources;
 
 @ComponentScan("ru.dselezneww")
-@EnableConfigurationProperties(NewsSources.class)
 @EnableAutoConfiguration
 @SpringBootConfiguration
 @EnableScheduling
