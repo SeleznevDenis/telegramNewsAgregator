@@ -14,8 +14,12 @@ public class BotRegistrator {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(BotRegistrator.class);
 
-    @Autowired
     private static TelegramEndpoint bot;
+
+    @Autowired
+    public void setBot(TelegramEndpoint bot) {
+        BotRegistrator.bot = bot;
+    }
 
     public static void register() {
         if (bot != null) {
