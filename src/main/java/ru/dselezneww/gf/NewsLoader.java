@@ -20,6 +20,7 @@ public class NewsLoader {
 
     @Autowired
     public NewsLoader(RssParser rssParser, NewsConverter... converters) {
+        this.rssParser = rssParser;
         for (NewsConverter converter : converters) {
             this.storage.put(converter.getSource(), converter);
         }
