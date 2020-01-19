@@ -40,11 +40,11 @@ public class TelegramEndpoint extends TelegramLongPollingBot {
 
     @Override
     public String getBotUsername() {
-        return "FormerNewsFeeder";
+        return "FormerNewsFeederBot";
     }
 
     @Override
     public String getBotToken() {
-        return "FormerNewsFeeder";
+        return "1021779322:AAFnf_HBppypJcG-x49UWWOodWiUH4gN98I";
     }
 }
