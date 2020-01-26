@@ -8,9 +8,7 @@ import ru.dselezneww.models.News;
 import ru.dselezneww.models.NewsSources;
 import ru.dselezneww.pb.RssParser;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Component
 public class NewsLoader {
@@ -24,6 +22,10 @@ public class NewsLoader {
         for (NewsConverter converter : converters) {
             this.storage.put(converter.getSource(), converter);
         }
+    }
+
+    public static synchronized void test() {
+
     }
 
     @Cacheable("news")
