@@ -3,6 +3,7 @@ package ru.dselezneww.pl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
@@ -13,6 +14,12 @@ import ru.dselezneww.orchestration.TelegramOrchestration;
 @Component
 public class TelegramEndpoint extends TelegramLongPollingBot {
     private static final Logger LOGGER = LoggerFactory.getLogger(TelegramEndpoint.class);
+
+    @Value("BOT_NAME")
+    public String name;
+
+    @Value("BOT_TOKEN")
+    public String token;
 
     private TelegramOrchestration orchestration;
 
@@ -49,11 +56,11 @@ public class TelegramEndpoint extends TelegramLongPollingBot {
 
     @Override
     public String getBotUsername() {
-        return "FormerNewsFeederBot";
+        return this.name;
     }
 
     @Override
     public String getBotToken() {
-        return "1021779322:AAFnf_HBppypJcG-x49UWWOodWiUH4gN98I";
+        return this.token;
     }
 }
