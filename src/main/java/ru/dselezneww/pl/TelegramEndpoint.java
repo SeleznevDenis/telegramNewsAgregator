@@ -15,10 +15,10 @@ import ru.dselezneww.orchestration.TelegramOrchestration;
 public class TelegramEndpoint extends TelegramLongPollingBot {
     private static final Logger LOGGER = LoggerFactory.getLogger(TelegramEndpoint.class);
 
-    @Value("BOT_NAME")
+    @Value("${BOT_NAME}")
     public String name;
 
-    @Value("BOT_TOKEN")
+    @Value("${BOT_TOKEN}")
     public String token;
 
     private TelegramOrchestration orchestration;
